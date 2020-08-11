@@ -8,7 +8,15 @@ const condimentSchema = new Schema({
     },
     category: {
         type: String,
-        required: true
+        required: false
+    },
+    price: {
+        type: String,
+        required: false
+    },
+    img: {
+        type: String,
+        required: false
     },
 })
 

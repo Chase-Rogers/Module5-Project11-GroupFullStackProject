@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Condiment = require('./condiment');
+const Condiment = require('./condiment').schema;
 const Schema = mongoose.Schema
 
 const burgerSchema = new Schema({
@@ -11,8 +11,21 @@ const burgerSchema = new Schema({
         type: String,
         required: true
     },
-    condiment: [Condiment],
+    price: {
+        type: Number,
+        required: true
+    },
+    img: {
+        type: String,
+        required: false
+    },
+    condiment: {
+        type: [Condiment],
+    },
+
 
 })
 
-module.exports = mongoose.model("Burger", burgerSchema)
+const burgerModel = mongoose.model("Burger", burgerSchema)
+
+module.exports = burgerModel

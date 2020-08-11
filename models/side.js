@@ -10,10 +10,14 @@ const sideSchema = new Schema({
         type: String,
         required: true
     },
-    condiments: {
-        type: Array,
+    price: {
+        type: Number,
         required: true
+    },
+    img: {
+        type: String,
+        required: false
     },
 })
 
-module.exports = mongoose.model("Burger", burgerSchema)
+module.exports = mongoose.model("Side", sideSchema)

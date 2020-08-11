@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Burger = require('./burger');
-const Side = require('./side')
-const Drink = require('./drink')
+const Burger = require('./burger').schema;
+const Side = require('./side').schema
+const Drink = require('./drink').schema
 const Schema = mongoose.Schema
 
 const comboSchema = new Schema({
@@ -9,10 +9,19 @@ const comboSchema = new Schema({
         type: String,
         required: true
     },
-    drink: [Drink],
-    burger: [Burger],
-    side: [Side]
+    drink: {
+        type: Drink,
+        required: true
+    },
+    burger: {
+        type: Burger,
+        required: true
+    },
+    side: {
+        type: Side,
+        required: true
+    },
 
 })
 
-module.exports = mongoose.model("Burger", burgerSchema)
+module.exports = mongoose.model("Combo", comboSchema)
