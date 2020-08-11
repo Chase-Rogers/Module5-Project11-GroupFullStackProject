@@ -7,7 +7,8 @@ const mongoose = require('mongoose')
 app.use((req,res, next)=> {
     res.header('Access-Control-Allow-Origin', '*')
     next()
-})//along with proxy in package.json, allows browser to take cross-origin servers
+})
+//I like this comment better :p
 
 
 app.listen(9000, () => {
