@@ -17,11 +17,13 @@ mongoose.connect('mongodb://localhost:27017/module5-group-project',
     () => console.log('Connected to the DB')
 )
 
+//Routes
 app.use("/combo", require("./routes/comboRouter"));
-// app.use("/drink", require("./routes/drinkRouter"));
-// app.use("/burger", require("./routes/burgerRouter"));
-// app.use("/side", require("./routes/sideRouter"));
-// app.use("/condiments", require("./routes/condimentsRouter"));
+app.use("/drink", require("./routes/drinkRouter"));
+app.use("/burger", require("./routes/burgerRouter"));
+app.use("/side", require("./routes/sideRouter"));
+app.use("/condiment", require("./routes/condimentRouter"));
+app.use("/order", require("./routes/orderRouter"))
 
 app.use((err, req, res, next) => {
     console.log(err)

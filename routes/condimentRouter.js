@@ -1,12 +1,12 @@
 const express = require("express");
-const comboRouter = express.Router();
-const Combo = require('../models/combo')
+const condimentRouter = express.Router();
+const Condiment = require('../models/condiment')
 
 // Get all and post
-comboRouter
+condimentRouter
     .route("/")
     .get((req, res, next) => {
-        Combo.find((err, item) => {
+        Condiment.find((err, item) => {
             if(err) {
                 res.status(500)
                 return next(err)
@@ -15,18 +15,18 @@ comboRouter
         })
     })
     .post((req, res, next) => {
-        const newCombo = new Combo(req.body);
-        newCombo.save((err, newCombo) => {
+        const newCondiment = new Condiment(req.body);
+        newCondiment.save((err, newCondiment) => {
             if(err) {
                 res.status(500)
                 return next(err)
             }
-            return res.status(201).send(newCombo);
+            return res.status(201).send(newCondiment);
         })
     });
 
-comboRouter.get("/:menuId", (req, res, next) => {
-    Combo.find({_id: req.params.menuId}, (err, item) => {
+condimentRouter.get("/:menuId", (req, res, next) => {
+    Condiment.find({_id: req.params.menuId}, (err, item) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -35,8 +35,8 @@ comboRouter.get("/:menuId", (req, res, next) => {
     })
 });
 
-comboRouter.get("/search/type", (req, res, next) => {
-    Combo.find({faction: req.query.type}, (err, item) => {
+condimentRouter.get("/search/type", (req, res, next) => {
+    Condiment.find({faction: req.query.type}, (err, item) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -45,8 +45,8 @@ comboRouter.get("/search/type", (req, res, next) => {
     })
 });
 
-comboRouter.delete("/:menuId", (req, res, next) => {
-    Combo.findOneAndDelete({_id: req.params.menuId}, (err, deletedItem) => {
+condimentRouter.delete("/:menuId", (req, res, next) => {
+    Condiment.findOneAndDelete({_id: req.params.menuId}, (err, deletedItem) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -55,19 +55,19 @@ comboRouter.delete("/:menuId", (req, res, next) => {
     })
 })
 
-comboRouter.put("/:comboId", (req, res, next) => {
-    Combo.findOneAndUpdate(
-        {_id: req.params.comboId}, 
+condimentRouter.put("/:condimentId", (req, res, next) => {
+    Condiment.findOneAndUpdate(
+        {_id: req.params.condimentId}, 
         req.body, 
         {new: true},
-        (err, updatedCombo) => {
+        (err, updatedCondiment) => {
             if(err) {
                 res.status(500)
                 return next(err)
             }
-            return res.status(201).send(updatedCombo)
+            return res.status(201).send(updatedCondiment)
         }
     )
 });
 
-module.exports = comboRouter
+module.exports = condimentRouter

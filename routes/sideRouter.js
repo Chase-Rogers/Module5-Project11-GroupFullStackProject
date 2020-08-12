@@ -1,12 +1,12 @@
 const express = require("express");
-const comboRouter = express.Router();
-const Combo = require('../models/combo')
+const sideRouter = express.Router();
+const Side = require('../models/side')
 
 // Get all and post
-comboRouter
+sideRouter
     .route("/")
     .get((req, res, next) => {
-        Combo.find((err, item) => {
+        Side.find((err, item) => {
             if(err) {
                 res.status(500)
                 return next(err)
@@ -15,18 +15,18 @@ comboRouter
         })
     })
     .post((req, res, next) => {
-        const newCombo = new Combo(req.body);
-        newCombo.save((err, newCombo) => {
+        const newSide = new Side(req.body);
+        newSide.save((err, newSide) => {
             if(err) {
                 res.status(500)
                 return next(err)
             }
-            return res.status(201).send(newCombo);
+            return res.status(201).send(newSide);
         })
     });
 
-comboRouter.get("/:menuId", (req, res, next) => {
-    Combo.find({_id: req.params.menuId}, (err, item) => {
+sideRouter.get("/:menuId", (req, res, next) => {
+    Side.find({_id: req.params.menuId}, (err, item) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -35,8 +35,8 @@ comboRouter.get("/:menuId", (req, res, next) => {
     })
 });
 
-comboRouter.get("/search/type", (req, res, next) => {
-    Combo.find({faction: req.query.type}, (err, item) => {
+sideRouter.get("/search/type", (req, res, next) => {
+    Side.find({faction: req.query.type}, (err, item) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -45,8 +45,8 @@ comboRouter.get("/search/type", (req, res, next) => {
     })
 });
 
-comboRouter.delete("/:menuId", (req, res, next) => {
-    Combo.findOneAndDelete({_id: req.params.menuId}, (err, deletedItem) => {
+sideRouter.delete("/:menuId", (req, res, next) => {
+    Side.findOneAndDelete({_id: req.params.menuId}, (err, deletedItem) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -55,19 +55,19 @@ comboRouter.delete("/:menuId", (req, res, next) => {
     })
 })
 
-comboRouter.put("/:comboId", (req, res, next) => {
-    Combo.findOneAndUpdate(
-        {_id: req.params.comboId}, 
+sideRouter.put("/:sideId", (req, res, next) => {
+    Side.findOneAndUpdate(
+        {_id: req.params.sideId}, 
         req.body, 
         {new: true},
-        (err, updatedCombo) => {
+        (err, updatedSide) => {
             if(err) {
                 res.status(500)
                 return next(err)
             }
-            return res.status(201).send(updatedCombo)
+            return res.status(201).send(updatedSide)
         }
     )
 });
 
-module.exports = comboRouter
+module.exports = sideRouter

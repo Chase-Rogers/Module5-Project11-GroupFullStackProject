@@ -1,12 +1,12 @@
 const express = require("express");
-const comboRouter = express.Router();
-const Combo = require('../models/combo')
+const burgerRouter = express.Router();
+const Burger = require('../models/burger')
 
 // Get all and post
-comboRouter
+burgerRouter
     .route("/")
     .get((req, res, next) => {
-        Combo.find((err, item) => {
+        Burger.find((err, item) => {
             if(err) {
                 res.status(500)
                 return next(err)
@@ -15,18 +15,18 @@ comboRouter
         })
     })
     .post((req, res, next) => {
-        const newCombo = new Combo(req.body);
-        newCombo.save((err, newCombo) => {
+        const newBurger = new Burger(req.body);
+        newBurger.save((err, newBurger) => {
             if(err) {
                 res.status(500)
                 return next(err)
             }
-            return res.status(201).send(newCombo);
+            return res.status(201).send(newBurger);
         })
     });
 
-comboRouter.get("/:menuId", (req, res, next) => {
-    Combo.find({_id: req.params.menuId}, (err, item) => {
+burgerRouter.get("/:menuId", (req, res, next) => {
+    Burger.find({_id: req.params.menuId}, (err, item) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -35,8 +35,8 @@ comboRouter.get("/:menuId", (req, res, next) => {
     })
 });
 
-comboRouter.get("/search/type", (req, res, next) => {
-    Combo.find({faction: req.query.type}, (err, item) => {
+burgerRouter.get("/search/type", (req, res, next) => {
+    Burger.find({faction: req.query.type}, (err, item) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -45,8 +45,8 @@ comboRouter.get("/search/type", (req, res, next) => {
     })
 });
 
-comboRouter.delete("/:menuId", (req, res, next) => {
-    Combo.findOneAndDelete({_id: req.params.menuId}, (err, deletedItem) => {
+burgerRouter.delete("/:menuId", (req, res, next) => {
+    Burger.findOneAndDelete({_id: req.params.menuId}, (err, deletedItem) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -55,19 +55,19 @@ comboRouter.delete("/:menuId", (req, res, next) => {
     })
 })
 
-comboRouter.put("/:comboId", (req, res, next) => {
-    Combo.findOneAndUpdate(
-        {_id: req.params.comboId}, 
+burgerRouter.put("/:burgerId", (req, res, next) => {
+    Burger.findOneAndUpdate(
+        {_id: req.params.burgerId}, 
         req.body, 
         {new: true},
-        (err, updatedCombo) => {
+        (err, updatedBurger) => {
             if(err) {
                 res.status(500)
                 return next(err)
             }
-            return res.status(201).send(updatedCombo)
+            return res.status(201).send(updatedBurger)
         }
     )
 });
 
-module.exports = comboRouter
+module.exports = burgerRouter
