@@ -3,14 +3,34 @@ const app = express()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 
+// Middleware
+app.use(express.json());
+app.use(morgan('dev'))
 
-app.use((req,res, next)=> {
-    res.header('Access-Control-Allow-Origin', '*')
-    next()
-})//along with proxy in package.json, allows browser to take cross-origin servers
-//seths comment
+mongoose.connect('mongodb://localhost:27017/module5-group-project', 
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    },
+    () => console.log('Connected to the DB')
+)
 
-app.listen(9000, () => {
-    console.log('Server running on port 9000')
+//Routes
+app.use("/combo", require("./routes/comboRouter"));
+app.use("/drink", require("./routes/drinkRouter"));
+app.use("/burger", require("./routes/burgerRouter"));
+app.use("/side", require("./routes/sideRouter"));
+app.use("/condiment", require("./routes/condimentRouter"));
+app.use("/order", require("./routes/orderRouter"))
+
+app.use((err, req, res, next) => {
+    console.log(err)
+    return res.send({Error: err.message})
 })
-//These are added test comments for git practice
+
+// 1: port   2: callback function
+app.listen(9000, () => {
+    console.log("The server is running on port 9000");
+});
