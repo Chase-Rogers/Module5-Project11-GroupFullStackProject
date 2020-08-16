@@ -24,6 +24,7 @@ app.use("/burger", require("./routes/burgerRouter"));
 app.use("/side", require("./routes/sideRouter"));
 app.use("/condiment", require("./routes/condimentRouter"));
 app.use("/order", require("./routes/orderRouter"))
+app.use("/cart", require("./routes/shoppingCartRouter"))
 
 app.use((err, req, res, next) => {
     console.log(err)
