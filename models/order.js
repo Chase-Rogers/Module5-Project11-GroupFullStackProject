@@ -11,6 +11,11 @@ const orderSchema = new Schema({
         type: String,
         required: true,
     },
+    menuItems: {
+        type: [Drink, Burger, Side, Condiment, Combo],
+        quantity: Number,
+        required: false
+    },
     total: {
         type: Number,
         required: true,
@@ -19,9 +24,9 @@ const orderSchema = new Schema({
         type: Number,
         required: true,
     },
-    menuItems: {
-        type: [Drink, Burger, Side, Condiment, Combo],
-        required: false
+    subTotal: {
+        type: Number,
+        required: true,
     }
 });
 
