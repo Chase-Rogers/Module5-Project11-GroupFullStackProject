@@ -22,6 +22,8 @@ const burgerSchema = new Schema({
     condiment: {
         type: [Condiment],
     },
+    quantity: Number,
+    required: false
 
 
 })
