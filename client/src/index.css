@@ -111,10 +111,14 @@ img {
   align-items: center;
   justify-items: center;
   /* border: 1px solid red; */
+  /* Thhe blow is to make sure all pictures are square & avoid distortion without having to to do bg img */
+  border-bottom: 5px solid white;
+  max-height: 80px;
+  overflow: hidden;
 }
 .addedFoodItem img {
   width: 70px;
-  margin: 10px;
+  margin: 5px;
 }
 .addedFoodItem .deleteBtn {
 }

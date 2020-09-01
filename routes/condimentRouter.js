@@ -51,7 +51,8 @@ condimentRouter.delete("/:menuId", (req, res, next) => {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(`successfully removed item.`)
+        console.log(req.body)
+        return res.status(200).send(`successfully removed ${}.`)
         // return res.status(200).send(`Successfully removed ${deletedItem.name}`) You can't do this - the item's already been deleted!
     })
 })

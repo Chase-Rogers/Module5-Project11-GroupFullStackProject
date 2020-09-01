@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import defaultCondimentImg from '../../assets/condiment.png'
+import FoodItem from './FoodItem';
 
 function ChangeCondiment(props) {
   //this stores the data from the api in state
@@ -57,18 +58,24 @@ function ChangeCondiment(props) {
   }
   //console.log(props.route)
   //console.log("props on food item page: ", props)
+  const allExtras = condiments.map(extra => 
+  <FoodItem 
+  {...extra}  
+  key={extra._id} 
+  deleteFunction={deleteCondiment} />)
 
-  const allExtras = condiments.map(extra => <div className="addedFoodItem" key={extra._id}>
-  <span className="itemField flex-row"><p>Item: </p>&nbsp; {extra.name} </span>
-  <span className="itemField flex-row"><p> {extra.category && "Category: "} </p>&nbsp; {extra.category}</span> 
-  <span className="itemField flex-row"><p> {extra.price === "" || "O"? "": "Price: $"}</p>&nbsp; {extra.price === "0" ? "": extra.price}</span> 
-  <span className="itemField flex-row"><p>&nbsp; </p><img src={extra.img || defaultCondimentImg} /></span>
-  <button onClick={() => deleteCondiment(extra._id)} className="deleteBtn">x</button>
-  </div>)
+  // const allExtras = condiments.map(extra => <div className="addedFoodItem" key={extra._id}>
+  // <span className="itemField flex-row"><p>Item: </p>&nbsp; {extra.name} </span>
+  // <span className="itemField flex-row"><p> {extra.category && "Category: "} </p>&nbsp; {extra.category}</span> 
+  // <span className="itemField flex-row"><p> {extra.price === "" || "O"? "": "Price: $"}</p>&nbsp; {extra.price === "0" ? "": extra.price}</span> 
+  // <span className="itemField flex-row"><p>&nbsp; </p><img src={extra.img || defaultCondimentImg} /></span>
+  // <button onClick={() => deleteCondiment(extra._id)} className="deleteBtn">x</button>
+  // </div>)
   return (
+    <>
+    <h2>This is the Change {props.type}s Form.</h2>
+    {allExtras.sort((a, b)=> (a.name > b.name)? 1: -1)}
     <form onSubmit={handleSubmit} className="formClass condimentForm">
-      <h2>This is the Change {props.type}s Form.</h2>
-      {allExtras}
     <div className={`inputs ${formShow}`}>
       <input 
         className=""
@@ -105,6 +112,7 @@ function ChangeCondiment(props) {
         className="addNewBtn" 
         onClick={toggleInputs }>+</button>
     </form>
+    </>
   );
 }
 
