@@ -1,7 +1,6 @@
 {
   "name": "project9-group-project",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,6 +13,17 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "mongoose": "^5.9.27",
-    "morgan": "^1.10.0"
-  }
+    "morgan": "^1.10.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chase-Rogers/Module5-Project9-GroupFullStackProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Chase-Rogers/Module5-Project9-GroupFullStackProject/issues"
+  },
+  "homepage": "https://github.com/Chase-Rogers/Module5-Project9-GroupFullStackProject#readme",
+  "description": ""
 }

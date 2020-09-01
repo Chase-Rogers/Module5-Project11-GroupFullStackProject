@@ -5,9 +5,116 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #333;
+}
+.flex-col {
+  display: flex;
+  flex-flow: column wrap;
+}
+.flex-row {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 code, p {
   font-family: Consolas, 'Courier New',
     monospace;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+#root {
+  padding: 5vh 5vw;
+}
+.App{
+  margin: 0 auto;
+  max-width: 900px;
+}
+.btn {
+  padding: 10px 15px;
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  margin: 1vh;
+}
+.dishTypeHolder {
+  max-width: 900px;
+  padding: 2vh 0;
+  display: flex;
+  justify-content: space-between;
+  /* border: #333 solid 1px; */
+}
+.dishType {
+  /* height: 200px; */
+  border: #333 solid 1px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.dishType a {
+  color: inherit;
+  text-decoration: none;
+}
+.App .btnHolder {
+  padding-top: 5vh;
+  display: flex;
+  justify-content: flex-end;
+}
+.btnHolder .btn {
+}
+.formClass {
+  border: 2px solid black;
+  padding: 2vh;
+}
+.formClass input {
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+.inputs {
+  padding: 10px 15px;
+  background-color: #333;
+}
+.inputs > .btn {
+  padding: 5px 10px;
+  background-color: rgb(0, 155, 83);
+  color: #fff;
+  border: #fff 1px solid;
+}
+.inputs > .btn:hover {
+  opacity: .8;
+}
+.addNewBtn, .deleteBtn {
+  /* so button drops below form */
+  display: block;
+  margin: 10px 10px 10px 0;
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 0 10px;
+}
+.showInputs {
+  display: inline-block;
+}
+.hideInputs {
+  display: none;
+}
+.addedFoodItem {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+  justify-items: center;
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+.addedFoodItem .itemField {
+  align-items: center;
+  justify-items: center;
+  /* border: 1px solid red; */
+}
+.addedFoodItem img {
+  width: 70px;
+  margin: 10px;
+}
+.addedFoodItem .deleteBtn {
 }

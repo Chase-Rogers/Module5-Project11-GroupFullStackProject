@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Link, Switch, Route} from 'react-router-dom'
+import Home from './components/Home'
+import ChangeHolder from './components/changeItems/ChangeHolder'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex-col">
+      <h1>Burger Joint Ordering Application</h1>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/changeItem">
+          <ChangeHolder />
+        </Route>
+      </Switch>
+      <div className="btnHolder">
+        <Link className="btn" to="/">Home</Link>
+        <Link className="btn" to="/changeItem">Manager View: Add, Change or Delete Item</Link>
+      </div>
     </div>
   );
 }

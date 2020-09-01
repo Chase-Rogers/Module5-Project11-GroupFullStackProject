@@ -51,7 +51,7 @@ burgerRouter.delete("/:menuId", (req, res, next) => {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(`Successfully removed ${deletedItem.name}`)
+        return res.status(200).send(`Successfully removed that burger.`)
     })
 })
 
