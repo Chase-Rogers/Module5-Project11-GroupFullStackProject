@@ -25,6 +25,8 @@ const comboSchema = new Schema({
         type: Side,
         required: true
     },
+    quantity: Number,
+    required: false
 
 })
 

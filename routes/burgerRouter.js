@@ -25,7 +25,7 @@ burgerRouter
         })
     });
 
-burgerRouter.get("/:menuId", (req, res, next) => {
+burgerRouter.get("/:burgerId", (req, res, next) => {
     Burger.find({_id: req.params.menuId}, (err, item) => {
         if(err) {
             res.status(500)
@@ -45,7 +45,7 @@ burgerRouter.get("/search/type", (req, res, next) => {
     })
 });
 
-burgerRouter.delete("/:menuId", (req, res, next) => {
+burgerRouter.delete("/:burgerId", (req, res, next) => {
     Burger.findOneAndDelete({_id: req.params.menuId}, (err, deletedItem) => {
         if(err) {
             res.status(500)

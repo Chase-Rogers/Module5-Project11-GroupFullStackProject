@@ -18,6 +18,8 @@ const drinkSchema = new Schema({
         type: String,
         required: false
     },
+    quantity: Number,
+    required: false
 })
 
 module.exports = mongoose.model("Drink", drinkSchema)

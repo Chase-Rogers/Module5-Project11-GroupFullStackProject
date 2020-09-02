@@ -18,6 +18,8 @@ const sideSchema = new Schema({
         type: String,
         required: false
     },
+    quantity: Number,
+    required: false
 })
 
 module.exports = mongoose.model("Side", sideSchema)
