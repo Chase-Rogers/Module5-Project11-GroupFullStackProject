@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* index.js */
+
+
+/* App Component */
+.app-main{
+    display: grid;
+    grid-auto-columns: repeat(2, 1fr);
+}
+.app-main-left{
+    grid-column: 1/2;
+}
+.app-main-right{
+    grid-column: 2/3;
+    background-color: pink;
+}
+
+/* Combos Component */
+.combos{
+    display: flex;
+    flex-wrap: wrap;
+}
+.combos-red{
+    text-align: center;
+    background-color: red;
+    border: .5px solid rgba(0, 0, 0, 0.25);
+    width: 125px;
+    height: 100px;
+}
+.combos-grey{
+    text-align: center;
+    background-color: grey;
+    border: .5px solid rgba(0, 0, 0, 0.25);
+    width: 125px;
+    height: 100px;
+}
+
+/* Sides Component */
+
+
+/* Order Component */
+
+
+/* Total Component */
+
+
+/* Settings Component */
+
+
+/* Manager View Component */
+
