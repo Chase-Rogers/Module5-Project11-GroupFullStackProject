@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const condimentSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     category: {
         type: String,

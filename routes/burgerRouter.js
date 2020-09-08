@@ -6,7 +6,10 @@ const Burger = require('../models/burger')
 burgerRouter
     .route("/")
     .get((req, res, next) => {
-        Burger.find((err, item) => {
+        Burger.find()
+        .populate({path: "condiment"})
+        .exec(
+          (err, item) => {
             if(err) {
                 res.status(500)
                 return next(err)
@@ -34,7 +37,6 @@ burgerRouter.get("/:menuId", (req, res, next) => {
         return res.status(200).send(item)
     })
 });
-
 burgerRouter.get("/search/type", (req, res, next) => {
     Burger.find({faction: req.query.type}, (err, item) => {
         if(err) {

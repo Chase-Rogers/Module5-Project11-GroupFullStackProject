@@ -1,10 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ChooseCondimentForm from './ChooseCondimentForm';
 
 function FoodItemForm(props) {
-  
+   //these are to help set the initial input fields to empty/clean
+   const initInputs = {
+    name: props.name || "",
+    category: props.category || "",
+    price: props.price || "",
+    img: props.img || "", 
+  }
+  //this is the state for typing into input fields
+  const [inputs, setInputs] = useState(initInputs)
+
+
+  function handleSubmit(e) {
+    //e.preventDefault()
+    props.submitFunction(inputs, props._id)
+    setInputs(initInputs)
+    //props.toggleFormFunction("hideInputs")
+  }
+
+  function handleChange(e) {
+    const { name, value } = e.target
+    setInputs(prevInputs => ({...prevInputs, [name]:value}))
+  }
+  //console.log(inputs)
+  console.log("props.name in edit form: ",props.name)
   return (
-    <form onSubmit={handleSubmit} className="formClass condimentForm">
-    <div className={`inputs ${formShow}`}>
+    <div className='foodItemForm'>
+    <form onSubmit={handleSubmit} className={` formClass condimentsForm inputs ${props.showState}`}>
+      <ChooseCondimentForm />
       <input 
         className=""
         type="text" 
@@ -34,12 +59,12 @@ function FoodItemForm(props) {
         value={inputs.img} 
         onChange={handleChange} 
         placeholder="item image" />
-        <button className="btn">Add to list</button>
-      </div>
-        <button 
-        className="addNewBtn" 
-        onClick={toggleInputs }>+</button>
+    {/* add conditional addCondiments button here */}
+      <button className="btn">{props.btnText}</button>
+       
     </form>
+    </div>
+    
   );
 }
 

@@ -38,6 +38,9 @@ img {
   color: #fff;
   margin: 1vh;
 }
+.btn:hover {
+  opacity: .8;
+}
 .dishTypeHolder {
   max-width: 900px;
   padding: 2vh 0;
@@ -62,8 +65,6 @@ img {
   display: flex;
   justify-content: flex-end;
 }
-.btnHolder .btn {
-}
 .formClass {
   border: 2px solid black;
   padding: 2vh;
@@ -76,6 +77,19 @@ img {
   padding: 10px 15px;
   background-color: #333;
 }
+.addedFoodItem > .foodItemForm{
+  /* this makes the edit form span the whole grid */
+  grid-column: 1/-1;
+  margin: 10px 0;
+}
+.addedFoodItem > .condimentsList {
+   /* this makes the condiments form span the whole grid */
+   grid-column: 1/-1;
+   margin-left:25px;
+   margin-top: 10px;
+   align-items: center;
+   justify-self: start;
+}
 .inputs > .btn {
   padding: 5px 10px;
   background-color: rgb(0, 155, 83);
@@ -85,13 +99,24 @@ img {
 .inputs > .btn:hover {
   opacity: .8;
 }
-.addNewBtn, .deleteBtn {
+.addNewBtn, .deleteBtn, .editBtn, .closeBtn {
   /* so button drops below form */
   display: block;
   margin: 10px 10px 10px 0;
   font-size: 2rem;
   font-weight: 900;
   padding: 0 10px;
+}
+.addedFoodItem .editBtn {
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.addedFoodItem .closeBtn {
+  grid-column: -2/-1;
+  padding: 5px 10px;
+  font-weight: 300;
+  font-size: 1rem;
 }
 .showInputs {
   display: inline-block;
@@ -120,5 +145,6 @@ img {
   width: 70px;
   margin: 5px;
 }
-.addedFoodItem .deleteBtn {
+.innerCondForm {
+  color: white;
 }

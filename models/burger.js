@@ -19,7 +19,7 @@ const burgerSchema = new Schema({
         type: String,
         required: false
     },
-    condiment: {
+    condiments: {
         type: [Condiment],
     },
 

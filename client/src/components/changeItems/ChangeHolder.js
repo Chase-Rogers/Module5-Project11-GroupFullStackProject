@@ -2,15 +2,19 @@ import React from 'react'
 import DishType from './DishType'
 import {Switch, Route} from 'react-router-dom'
 import ChangeCondiment from './ChangeCondiment'
-import AddFoodItem from './AddFoodItem'
+import ChangeFoodItem from './ChangeFoodItem'
 
-function ChangeItem(props) {
+import defaultCondimentImg from '../../assets/condiment.png'
+import defaultBurgerImg from '../../assets/burger.png'
+import defaultDrinkImg from '../../assets/drink.png'
+import defaultSideImg from '../../assets/side.png'
+
+function ChangeHolder(props) {
 
   return (
     <div>
-        {/* <Route exact path="/changeItem"> */}
         <h3>Choose which Type to Add, Delete or Update</h3>
-        <div className="dishTypeHolder">
+        <div className="dishTypeHolder flex-row">
             <DishType type="Burger" route="/burger" />
             <DishType type="Side" route="/side" />
             <DishType type="Drink"route="/drink" />
@@ -21,16 +25,22 @@ function ChangeItem(props) {
           </div>
           {/* </Route> */}
       <Switch>
-          <Route exact path="/changeItem/condiment">
-            <ChangeCondiment type="Extra" route="/condiment" />
+          <Route exact path="/changeHolder/condiment">
+            <ChangeCondiment type="Extra" route="/condiment"  defaultImg={defaultCondimentImg} />
           </Route>
           {/* add route params to the below */}
-          <Route exact path="/changeItem/burger">
-            <AddFoodItem />
+          <Route exact path="/changeHolder/burger">
+            <ChangeFoodItem type="Burger" route="/burger"  defaultImg={defaultBurgerImg}/>
+          </Route>
+          <Route exact path="/changeHolder/drink">
+            <ChangeFoodItem type="Drink" route="/drink"  defaultImg={defaultDrinkImg}/>
+          </Route>
+          <Route exact path="/changeHolder/side">
+            <ChangeFoodItem type="Side" route="/side"  defaultImg={defaultSideImg}/>
           </Route>
       </Switch>
     </div>
   )
 }
 
-export default ChangeItem;
+export default ChangeHolder;

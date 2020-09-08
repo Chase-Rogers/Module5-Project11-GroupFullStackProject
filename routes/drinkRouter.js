@@ -6,13 +6,15 @@ const Drink = require('../models/drink')
 drinkRouter
     .route("/")
     .get((req, res, next) => {
-        Drink.find((err, item) => {
-            if(err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(200).send(item)
-        })
+        Drink.find()
+        .populate({path: "condiment"})
+        .exec((err, item) => {
+          if(err) {
+              res.status(500)
+              return next(err)
+          }
+          return res.status(200).send(item)
+      })
     })
     .post((req, res, next) => {
         const newDrink = new Drink(req.body);

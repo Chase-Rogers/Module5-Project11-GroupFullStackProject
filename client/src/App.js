@@ -11,13 +11,13 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/changeItem">
+        <Route path="/changeHolder">
           <ChangeHolder />
         </Route>
       </Switch>
       <div className="btnHolder">
         <Link className="btn" to="/">Home</Link>
-        <Link className="btn" to="/changeItem">Manager View: Add, Change or Delete Item</Link>
+        <Link className="btn" to="/changeHolder">Manager View: Add, Change or Delete Item</Link>
       </div>
     </div>
   );

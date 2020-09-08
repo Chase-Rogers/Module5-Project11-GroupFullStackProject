@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 
 function DishType(props) {
     
     return (
         <div className="dishType flex-col btn">
-          <Link to={"/changeItem" + props.route}>{props.type}</Link>
+          <Link to={"/changeHolder" + props.route}>{props.type}</Link>
         </div>
     );
 }
