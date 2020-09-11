@@ -4,15 +4,16 @@ import FoodItemForm from './FoodItemForm'
 
 function FoodItem(props) {
 
-  console.log("FoodItem props: ", props)
+  //console.log("FoodItem props: ", props)
   const [editToggle, setEditToggle] = useState(false)
-  //the below state is
-  const [condimentsDisplay, setCondimentsDisplay] = useState(false)
+  //the below state is for the toggle?
+  //const [condimentsDisplay, setCondimentsDisplay] = useState(false)
+  let areExtrasDisplayed = false
 
   //This gets at the list of condiments/extras for the menu item, if any
   let mappedCondiments = []
-  if (props.condiments && props.condiments !== []) {
-      //setCondimentsDisplay(true)
+  if (props.condiments && props.condiments.length > 0) {
+      areExtrasDisplayed = true
       mappedCondiments = props.condiments.map(extra => <span key={extra._id}>{extra.name}, &nbsp; </span>)
   }
 
@@ -21,7 +22,7 @@ function FoodItem(props) {
       {!editToggle ?
         <>
         {/* if I use condimentsDisplay boolean in the above mapping, I get an infinite loop??? */}
-        { condimentsDisplay === false && <div className="condimentsList flex-row"><p>Extras:&nbsp;</p>{mappedCondiments}</div>}
+        { areExtrasDisplayed && <div className="condimentsList flex-row"><p>Extras:&nbsp;</p>{mappedCondiments}</div>}
      
         
         <span className="itemField flex-row"><p>Item: </p>&nbsp; {props.name} </span>

@@ -12,24 +12,26 @@ function FoodItemForm(props) {
   //this is the state for typing into input fields
   const [inputs, setInputs] = useState(initInputs)
 
-
+  console.log("props.submitFunction: ",props.submitFunction)
   function handleSubmit(e) {
     //e.preventDefault()
     props.submitFunction(inputs, props._id)
+    console.log("What's in the add form: ",inputs)
     setInputs(initInputs)
-    //props.toggleFormFunction("hideInputs")
   }
 
   function handleChange(e) {
     const { name, value } = e.target
     setInputs(prevInputs => ({...prevInputs, [name]:value}))
   }
-  //console.log(inputs)
-  console.log("props.name in edit form: ",props.name)
+  console.log("props.name in the edit form: ",props.name)
+  //console.log("What's in the add form: ",inputs)
   return (
     <div className='foodItemForm'>
     <form onSubmit={handleSubmit} className={` formClass condimentsForm inputs ${props.showState}`}>
-      <ChooseCondimentForm />
+      {/* For the below component, will I have to add special props (in the ChangefoodItem and FoodItem, for add and edit) to pass down "put" and "post" calls, depending on where the form is? Or context?*/}
+     <ChooseCondimentForm thisFood={props} />
+      
       <input 
         className=""
         type="text" 

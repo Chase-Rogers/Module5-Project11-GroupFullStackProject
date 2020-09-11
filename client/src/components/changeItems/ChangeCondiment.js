@@ -50,7 +50,7 @@ function ChangeCondiment(props) {
   const allExtras = condiments.map(extra => 
     <FoodItem 
       {...extra} 
-      //key={extra._id} 
+      key={extra._id} 
       deleteFunction={deleteCondiment} 
       editFunction={editCondiment}
       defaultImg={props.defaultImg}

@@ -4,9 +4,7 @@ import FoodItem from './FoodItem';
 import FoodItemForm from './FoodItemForm';
 
 function ChangeFoodItem(props) {
-  //All this needs to be lifted so it can be used both here and in Condiment and possibly Combo pages
-  const[menuItems, setMenuItems] = useState([])
-
+  
   //this is the state to show or hide the addItem form
   const [formShow, setFormShow] = useState("hideInputs")
   //this adds a class to the .inputs div to show or hide the add item inputs
@@ -15,21 +13,23 @@ function ChangeFoodItem(props) {
   }
 
   function getMenuItems() {
-      console.log("props: " + props)
       Axios.get(props.route)
           .then(res => setMenuItems(res.data))
           .catch(err => console.log(err.res.data))
   }
+  //All this needs to be lifted so it can be used both here and in Condiment and possibly Combo pages
+  const[menuItems, setMenuItems] = useState([])
+
   console.log("set data: ", menuItems)
   console.log(props.route)
 
   useEffect(() => {
     getMenuItems()
-  }, [])
+  }, [props.route])
 
   function addMenuItem(newItems) {
     Axios.post(props.route, newItems)
-      .then(res => {setMenuItems(prevItemss => [...prevItemss, res.data])})
+      .then(res => {setMenuItems(prevItems => [...prevItems, res.data])})
       .catch(err => console.log(err.res.data))
   }
   function deleteMenuItem(foodItemId) {
